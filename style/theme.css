@@ -10,7 +10,7 @@ html, body {
 
 header {
   background-color: #272525;
-  color: #fff;
+  color: #ffffff;
   padding: 20px;
   text-align: center;
   display: flex;
@@ -67,7 +67,7 @@ section {
 }
 
 .project video {
-  max-width: 40%;
+  max-width: 0%;
   height: auto;
 }
 
