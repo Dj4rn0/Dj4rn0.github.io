@@ -24,21 +24,147 @@
                 <a href="/index.html">Home</a>                
                 <a href="/pages/aboutme.html">About me</a>
                 <a href="/pages/smallprojects.html">Small Projects</a>
-                <div id="google_translate_element"></div>
-                <script type="text/javascript">
-                function googleTranslateElementInit() {
-                  new google.translate.TranslateElement({pageLanguage: 'en'}, 'google_translate_element');
-                }
-                </script>
-                
-                <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
             </div>
 
-            <div id="Textbox1">
-                <h1>Unity Pathfinding Entity</h1>
-                <p>I consider this a big project <br> because I was really proud of how the project came together <br> this project was for SHINE an expo where we show how we grew from our past projects. <br> for my past project I tried to make a some-what scary game which I will talk about later on this page. <br> On the image below this text you can see a maze where the player would walk through whilst a red entity chases the player <br> (E being the entity, the blue line being the path the entity takes and P being the player) <br> the closer the entity got to the player the louder scary music would play. <br> The entity's pathfinding was made to get the optimal path towards the player and it worked too.</p>
-                <img src="/images/shinemaze.JPG" alt="Maze">
+            <!-- Unity build code -->
+            <div id="unity-container" class="unity-desktop">
+              <canvas id="unity-canvas" width="960" height="600"></canvas>
+              <div id="unity-loading-bar">
+                <div id="unity-logo"></div>
+                <div id="unity-progress-bar-empty">
+                  <div id="unity-progress-bar-full"></div>
+                </div>
+              </div>
+              <div id="unity-warning"> </div>
+              <div id="unity-footer">
+                <div id="unity-webgl-logo"></div>
+                <div id="unity-fullscreen-button"></div>
+                <div id="unity-build-title">Willow</div>
+              </div>
             </div>
+            <script>
+              var container = document.querySelector("#unity-container");
+              var canvas = document.querySelector("#unity-canvas");
+              var loadingBar = document.querySelector("#unity-loading-bar");
+              var progressBarFull = document.querySelector("#unity-progress-bar-full");
+              var fullscreenButton = document.querySelector("#unity-fullscreen-button");
+              var warningBanner = document.querySelector("#unity-warning");
+        
+              // Shows a temporary message banner/ribbon for a few seconds, or
+              // a permanent error message on top of the canvas if type=='error'.
+              // If type=='warning', a yellow highlight color is used.
+              // Modify or remove this function to customize the visually presented
+              // way that non-critical warnings and error messages are presented to the
+              // user.
+              function unityShowBanner(msg, type) {
+                function updateBannerVisibility() {
+                  warningBanner.style.display = warningBanner.children.length ? 'block' : 'none';
+                }
+                var div = document.createElement('div');
+                div.innerHTML = msg;
+                warningBanner.appendChild(div);
+                if (type == 'error') div.style = 'background: red; padding: 10px;';
+                else {
+                  if (type == 'warning') div.style = 'background: yellow; padding: 10px;';
+                  setTimeout(function() {
+                    warningBanner.removeChild(div);
+                    updateBannerVisibility();
+                  }, 5000);
+                }
+                updateBannerVisibility();
+              }
+        
+              var buildUrl = "Build";
+              var loaderUrl = buildUrl + "/New folder.loader.js";
+              var config = {
+                dataUrl: buildUrl + "/New folder.data",
+                frameworkUrl: buildUrl + "/New folder.framework.js",
+                codeUrl: buildUrl + "/New folder.wasm",
+                streamingAssetsUrl: "StreamingAssets",
+                companyName: "BreadCrumbs",
+                productName: "Willow",
+                productVersion: "1.0",
+                showBanner: unityShowBanner,
+              };
+        
+              // By default Unity keeps WebGL canvas render target size matched with
+              // the DOM size of the canvas element (scaled by window.devicePixelRatio)
+              // Set this to false if you want to decouple this synchronization from
+              // happening inside the engine, and you would instead like to size up
+              // the canvas DOM size and WebGL render target sizes yourself.
+              // config.matchWebGLToCanvasSize = false;
+        
+              if (/iPhone|iPad|iPod|Android/i.test(navigator.userAgent)) {
+                // Mobile device style: fill the whole browser client area with the game canvas:
+        
+                var meta = document.createElement('meta');
+                meta.name = 'viewport';
+                meta.content = 'width=device-width, height=device-height, initial-scale=1.0, user-scalable=no, shrink-to-fit=yes';
+                document.getElementsByTagName('head')[0].appendChild(meta);
+                container.className = "unity-mobile";
+                canvas.className = "unity-mobile";
+        
+                // To lower canvas resolution on mobile devices to gain some
+                // performance, uncomment the following line:
+                // config.devicePixelRatio = 1;
+        
+                unityShowBanner('WebGL builds are not supported on mobile devices.');
+              } else {
+                // Desktop style: Render the game canvas in a window that can be maximized to fullscreen:
+        
+                canvas.style.width = "960px";
+                canvas.style.height = "600px";
+              }
+        
+              loadingBar.style.display = "block";
+        
+              var script = document.createElement("script");
+              script.src = loaderUrl;
+              script.onload = () => {
+                createUnityInstance(canvas, config, (progress) => {
+                  progressBarFull.style.width = 100 * progress + "%";
+                }).then((unityInstance) => {
+                  loadingBar.style.display = "none";
+                  fullscreenButton.onclick = () => {
+                    unityInstance.SetFullscreen(1);
+                  };
+                }).catch((message) => {
+                  alert(message);
+                });
+              };
+              document.body.appendChild(script);
+            </script>
+            </div>
+            <!-- End of Unity build code -->
+
+            <!-- Unity build script -->
+            <script src="/unity/Build/UnityLoader.js"></script>
+            <script>
+              // Unity build configuration
+              var buildConfig = {
+                dataUrl: "unity/Build/StreamingAssets",
+                frameworkUrl: "unity/Build/Build.framework.js",
+                codeUrl: "unity/Build/Build.wasm",
+                companyName: "BreadCrumbs",
+                productName: "Willow",
+                productVersion: "1.0",
+                showBanner: unityShowBanner
+              };
+
+              // Load Unity build
+              var script = document.createElement("script");
+              script.src = "unity/Build/UnityLoader.js";
+              script.onload = function() {
+                createUnityInstance(document.getElementById("unity-canvas"), buildConfig, function(progress) {
+                  // Progress callback if needed
+                }).then(function(unityInstance) {
+                  // Optional: Do something with the Unity instance if needed
+                }).catch(function(error) {
+                  console.log("Failed to load Unity build:", error);
+                });
+              };
+              document.body.appendChild(script);
+            </script>
 
             <div id="Textbox1">
                 <h1>Ambition Project</h1>
@@ -52,30 +178,6 @@
         
             <footer>
                 <ul class="wrapper">
-                    <li class="icon facebook">
-                      <input type=button onClick="parent.open('https://www.facebook.com/djarno.dauntless.9/?viewas=&should_open_composer=false&show_switched_toast=false&show_invite_to_follow=false&show_switched_tooltip=false&show_podcast_settings=false&show_community_transition=false&show_community_review_changes=false&show_community_rollback=false&show_follower_visibility_disclosure=false&bypass_exit_warning=true')" 
-                        value='Facebook' >
-                      <span><i class="fab fa-facebook-f"></i></span>
-                    </li>
-                    <li class="icon mail">
-                        <a href="mailto:eijkenboomdjarno@gmail.com">Mail</a>.<br> 
-                      <span><i class="fab fa-twitter"></i></span>
-                    </li>
-                    <li class="icon instagram">
-                        <input type=button onClick="parent.open('https://www.instagram.com/dj4rn0/')" 
-                        value='Instagram' >
-                      <span><i class="fab fa-instagram"></i></span>
-                    </li>
-                    <li class="icon github">
-                        <input type=button onClick="parent.open('https://github.com/Dj4rn0')" 
-                        value='Github' >
-                      <span><i class="fab fa-github"></i></span>
-                    </li>
-                    <li class="icon youtube">
-                        <input type=button onClick="parent.open('https://www.youtube.com/channel/UCQGpP7_6vaX4xnkM-f0o0-Q')" 
-                        value='Youtube' >
-                      <span><i class="fab fa-youtube"></i></span>
-                    </li>
                   </ul>
               </footer>
     
