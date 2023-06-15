@@ -1,54 +1,65 @@
 <!DOCTYPE html>
-<html lang="en-ENG">
-    <head>
-        <title>PORTFOLIO</title>
+<html>
+<head>
+  <title>Software Developer Portfolio</title>
+  <!-- Bootstrap 5.2 -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
 
-        <!--Bootstrap 5.2-->
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+  <!-- StyleSheets -->
+  <link href="/style/theme.css" rel="stylesheet" />
 
-        <!--StyleSheets-->
-        <link href="/style/theme.css" rel="stylesheet" />
-
-        <!--Data-->
-        <script type="text/javascript" src="data/data.json"></script>
-        
-        <!--Content-->
-        <script src="/script/main.js" defer></script>
-
-        <!--Iconkitlink-->
-        <script src="https://kit.fontawesome.com/e9c2b7b560.js" crossorigin="anonymous"></script>
-
-    </head>
-    <body>
-        
-
-
-        <div class="topnav">
-            <a class="active" href="index.html">Home</a>
-            <a href="pages/aboutme.html">About me</a>
-            <a href="pages/bigprojects.html">Big Projects</a>
-            <a href="pages/smallprojects.html">Small Projects</a>
-            <div id="google_translate_element"></div>
+  <!-- Font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <div class="profile">
+          <img src="images/me.jpg" alt="Profile Picture">
+          <div class="profile-info">
+            <h1>Djarno Eijkenboom</h1>
+            <p>Software Developer Student</p>
+          </div>
         </div>
-        
-        <div id="backgroundimage" class="position-fixed">
-        </div>
+      </header>
 
-        <div class="Home">
-        <img src="images/me.jpg" alt="Avatar" class="avatar">
-        </div>
+  <section>
+    <h2><b>About Me 👋</b></h2>
+    <p>I am a passionate software developer with a keen eye to learn more about game development / web development and programming in general. I currently study at Sintlucas Eindhoven at MBO level also known as the intermediate vocational level. I always love trying to create something unique. My skills include C#, HTML, CSS, JavaScript and more. I am constantly learning and improving my skills to stay up-to-date with the latest technologies and trends in the industry. As of lately I've been practicing VR development a lot.</p>
+  </section>
 
-        <div id="Textbox">
-            <h1>Welcome to my portfolio!</h1>
-            <p>My name is Djarno Eijkenboom <br> and here I will show you everything that has to do with me,<br> from big projects to small projects and even just me in particular.</p>
-        </div>
+  <section>
+    <h2><b>Projects</b></h2>
+    <div class="project">
+      <h3><b>Willow - Global Game Jam</b></h3>
+      <p>For this project, a few classmates and I flew to Spain to participate in the Global Game Jam hosted in Malaga. The Game Jam's theme was "Roots", and I may not have won the competition, but I am very happy with the project I delivered.</p>
+      <input type=button onClick="parent.open('https://normalmilkguy.itch.io/willow')" 
+      value='Go to "Willow"' >
+    </div>
+    <div class="project">
+        <h3><b>Perlin Noise - Javascript</b></h3>
+        <video src="images/perlinnoise.mp4" controls></video>
+        <p>With this project we had to work with a program called "Processing 4" It's a sketchbook software with a focus on visual aspects. Our specific assignment was to make a screensaver using this programm and I made one using perlin noise shaping</p>
+      </div>
+    <div class="project">
+      <h3><b>2D Platformer - Arcade Machine</b></h3>
+      <p>This project was for a school assignment. We had to create a 2D platformer game with some unique features to be displayed on Arcade Machines in our school. I made use of Unity's physics system to create a falling spikeball enemy, and I also added the option for the player to shoot a second type of bullet.</p>
+    </div>
+    <div class="project">
+        <h3><b>Guilt - Roblox Game</b></h3>
+        <p>With this project, I wanted to try something different, using a completely different coding language for a game. This may not have been the best choice of code language due to its limitations to a small selection of game engines, but it was still new to me.</p>
+        <input type=button onClick="parent.open('https://www.roblox.com/games/9314520264/Guilt')" 
+        value='Go to "Guilt"' >
+      </div>
+  </section>
 
-        <div id="Textbox1">
-            <h1>Make sure to</h1>
-            <p>Use the navigation bar at the top of your screen to see more stuff!</p>
-        </div>
-        
-
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
-    </body>
+  <footer>
+    <p>&copy; 2023 Djarno Eijkenboom. All rights reserved.</p>
+    <div class="contact-links">
+      <a href="mailto:eijkenboomdjarno@gmail.com">Email</a>
+      <a href="https://www.linkedin.com/in/djarno-eijkenboom-860302253/">LinkedIn</a>
+    </div>
+  </footer>
+</body>
 </html>

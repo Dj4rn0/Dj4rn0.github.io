@@ -1,241 +1,93 @@
-html, body
-{
-    background: rgb(0,0,0);
-    background: linear-gradient(0deg, rgba(0,0,0,1) 0%, rgba(255,149,0,1) 100%);
-    background-image: url(/images/background1.jpg);
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: cover;
-    overflow-x: hidden;
+*{
+  font-family: 'League Spartan', sans-serif;
 }
 
-.avatar 
-{
-    vertical-align: right;
-    margin-left: 80%;
-    width: 20%;
-    border-radius: 100%;
-    box-shadow: 10px 10px;
-    margin-right: 20%;
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
 }
 
-.Button
-{
-    background: rgb(31,102,131);
-    color: white;
-    text-decoration: none;
-    max-height: 20%;
+header {
+  background-color: #272525;
+  color: #fff;
+  padding: 20px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-.topnav 
-{
-    background-color: #333;
-    overflow: hidden;
+header .profile {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
 }
-  
-  /* Style the links inside the navigation bar */
-  .topnav a 
-{
-    float: left;
-    color: #f2f2f2;
-    text-align: center;
-    padding: 24px 30px;
-    text-decoration: none;
-    font-size: 17px;
+
+header .profile img {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  margin-right: 20px;
 }
-  
-  /* Change the color of links on hover */
-  .topnav a:hover 
-{
-    background-color: rgb(222, 216, 216);
-    color: black;
-}
-  
-  /* Add a color to the active/current link */
-  .topnav a.active 
-{
-    background-color: #d96d09;
-    color: white;
+
+header h1, header p {
+  text-align: center;
 }
 
 
-  .socials i {
-    font-size: 25px;
-  }
-
-  .AboutmeKnightsuit1 {
-    width: 500px;
-  }
-  
-
-#Textbox
-{
-  margin-left: 5%;
-  background-color: white;
-  width: fit-content;
-  border-radius: 15px;
-  padding: 1%;
-  box-shadow: 10px 10px; 
+body {
+  display: flex;
+  flex-direction: column;
 }
 
-#Textbox1
-{
-  margin-top: 3%;
-  margin-left: 20%;
-  background-color: white;
-  width: fit-content;
-  border-radius: 15px;
-  padding: 1%;
-  box-shadow: 10px 10px; 
+
+h1 {
+  font-size: 30px;
+  margin: 0;
 }
 
-#Textbox2
-{
-  margin-top: 3%;
-  margin-left: 10%;
-  background-color: white;
-  width: fit-content;
-  border-radius: 15px;
-  padding: 1%;
-  box-shadow: 10px 10px; 
-}
-  
-#Textbox3
-{
-  margin-top: 20%;
-  margin-left: 10%;
-  background-color: white;
-  width: fit-content;
-  border-radius: 15px;
-  padding: 1%;
-  box-shadow: 10px 10px; 
+section {
+  flex: 1;
+  padding: 50px 20px;
+  text-align: center;
 }
 
-#Showcaseimage
-{
-  margin-top: 5%;
-  margin-left: 10%;
-  max-width: 5%;
-  margin-bottom: 0px;
-  border-radius: 100%;
-  box-shadow: 10px 10px;
+.project {
+  margin-bottom: 50px;
+}
 
+.project h2 {
+  font-size: 24px;
+}
+
+.project p {
+  margin-top: 10px;
+}
+
+.project video {
+  max-width: 40%;
+  height: auto;
 }
 
 footer {
-  margin-top: 2%;
-  background-color: #dd6b07
+  background-color: #272525;
+  color: #fff;
+  padding: 20px;
+  text-align: center;
 }
 
-@import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
-
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+footer .contact-links {
+  margin-top: 10px;
 }
 
-*:focus,
-*:active {
-  outline: none !important;
-  -webkit-tap-highlight-color: transparent;
+footer .contact-links a {
+  margin-right: 10px;
+  color: #fff;
+  text-decoration: none;
 }
 
-
-.wrapper {
-  margin-left: 33%;
-  margin-right: 33%;
-  display: inline-flex;
-  list-style: none;
-}
-
-.wrapper .icon {
-  position: relative;
-  background: #ffffff;
-  border-radius: 50%;
-  padding: 15px;
-  margin: 10px;
-  width: 50px;
-  height: 50px;
-  font-size: 18px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1);
-  cursor: pointer;
-  transition: all 0.2s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-}
-
-.wrapper .tooltip {
-  position: absolute;
-  top: 0;
-  font-size: 14px;
-  background: #ffffff;
-  color: #ffffff;
-  padding: 5px 8px;
-  border-radius: 5px;
-  box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1);
-  opacity: 0;
-  pointer-events: none;
-  transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-}
-
-.wrapper .tooltip::before {
-  position: absolute;
-  content: "";
-  height: 8px;
-  width: 8px;
-  background: #ffffff;
-  bottom: -3px;
-  left: 50%;
-  transform: translate(-50%) rotate(45deg);
-  transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-}
-
-.wrapper .icon:hover .tooltip {
-  top: -45px;
-  opacity: 1;
-  visibility: visible;
-  pointer-events: auto;
-}
-
-.wrapper .icon:hover span,
-.wrapper .icon:hover .tooltip {
-  text-shadow: 0px -1px 0px rgba(0, 0, 0, 0.1);
-}
-
-.wrapper .facebook:hover,
-.wrapper .facebook:hover .tooltip,
-.wrapper .facebook:hover .tooltip::before {
-  background: #1877f2;
-  color: #ffffff;
-}
-
-.wrapper .twitter:hover,
-.wrapper .twitter:hover .tooltip,
-.wrapper .twitter:hover .tooltip::before {
-  background: #1da1f2;
-  color: #ffffff;
-}
-
-.wrapper .instagram:hover,
-.wrapper .instagram:hover .tooltip,
-.wrapper .instagram:hover .tooltip::before {
-  background: #e4405f;
-  color: #ffffff;
-}
-
-.wrapper .github:hover,
-.wrapper .github:hover .tooltip,
-.wrapper .github:hover .tooltip::before {
-  background: #333333;
-  color: #ffffff;
-}
-
-.wrapper .youtube:hover,
-.wrapper .youtube:hover .tooltip,
-.wrapper .youtube:hover .tooltip::before {
-  background: #cd201f;
-  color: #ffffff;
+footer .contact-links a:hover {
+  text-decoration: underline;
 }
