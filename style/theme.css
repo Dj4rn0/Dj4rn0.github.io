@@ -54,6 +54,29 @@ section {
   text-align: center;
 }
 
+.projects-section {
+  padding: 1px 10px;
+}
+
+.custom-button {
+  background-color: #272525;
+  color: #ffffff;
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.custom-button:hover {
+  background-color: #000000;
+}
+
+.project-image {
+  max-width: 40%;
+  height: auto;
+}
+
 .project {
   margin-bottom: 50px;
 }
